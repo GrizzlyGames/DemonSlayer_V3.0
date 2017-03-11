@@ -8,6 +8,9 @@ public class PlayerMovement_Script : MonoBehaviour
     private CharacterController _controller;
 
     [SerializeField]
+    private Transform _bodyRotationTrans;
+
+    [SerializeField]
     private Camera _fpsCamera;
 
     [SerializeField]
@@ -22,6 +25,10 @@ public class PlayerMovement_Script : MonoBehaviour
     private float _gravity = 1.0f;
 
     private Vector3 _jumpDirection;
+
+    private bool _isCrouching = false;
+    private bool _isSprinting = false;
+    private bool _wantToSprint = false;
 
 
     // Use this for initialization
@@ -52,23 +59,44 @@ public class PlayerMovement_Script : MonoBehaviour
     }
     private void Crouch()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !_isSprinting)
+        {
+            _isCrouching = true;
+            _fpsCamera.transform.localPosition = new Vector3(0, 1.2f, 0.25f);
             _anim.SetBool("Crouching", true);
-
+        }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            _isCrouching = false;
+            _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.25f);
             _anim.SetBool("Crouching", false);
+        }
     }
-    private void Sprint()
+    private void Sprint(Vector3 direction)
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
+            _wantToSprint = true;
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+            _wantToSprint = false;
+
+        if (Mathf.Abs(direction.x) > 0 || Mathf.Abs(direction.z) > 0)
         {
-            _anim.SetBool("Sprinting", true);
-            _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.5f);
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            _anim.SetBool("Sprinting", false);
-            _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.25f);
+            Debug.Log("Want to sprint: " + _wantToSprint);
+            if (Input.GetKeyDown(KeyCode.LeftShift) || _wantToSprint && !_isCrouching)
+            {
+                _anim.SetBool("Sprinting", true);
+                _isSprinting = true;
+                _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.5f);
+                _bodyRotationTrans.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift) || !_wantToSprint)
+            {
+                _anim.SetBool("Sprinting", false);
+                _isSprinting = false;
+                _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.3f);
+                _bodyRotationTrans.localRotation = Quaternion.Euler(0, 30, 0);
+            }
         }
     }
     private void Jump()
@@ -85,7 +113,7 @@ public class PlayerMovement_Script : MonoBehaviour
         {
             _jumpDirection.y -= _gravity * Time.deltaTime;
             _controller.Move(_jumpDirection * Time.deltaTime);
-        }    
+        }
     }
     private void Kick()
     {
@@ -104,12 +132,12 @@ public class PlayerMovement_Script : MonoBehaviour
         else
             _anim.SetBool("Walking", false);
         Crouch();
-        Sprint();
+        Sprint(direction);
         Jump();
         Kick();
     }
-    private bool GroundedCheck() 
- {        
+    private bool GroundedCheck()
+    {
         return Physics.Raycast(transform.position, -Vector3.up, 0.09f);
- }
+    }
 }
