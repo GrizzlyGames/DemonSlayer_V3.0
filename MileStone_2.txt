@@ -1,0 +1,11 @@
+* Removed Unity Standard Asset Third-Person Controller
+* Wrote my own Player Controllering including head bobing, crouching, sprinting, jumping
+
+* Imported player character 3d model.
+* Animated player using 30 blended animations
+
+* Removed health bar
+* Added blood overlay indicating player health
+
+
+
