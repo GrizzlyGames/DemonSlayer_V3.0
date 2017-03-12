@@ -6,8 +6,7 @@ public class PlayerShoot_Script : MonoBehaviour
 {
     public Camera _fpsCam;
     public Animator _animator;
-    public LineRenderer _laserLine;
-    public Transform _gunEnd;
+    public ArcReactor_Launcher _arcReactorLauncher;
 
     public int _currentAmmo = 12;
     public int _magazineCapacity = 12;
@@ -18,6 +17,7 @@ public class PlayerShoot_Script : MonoBehaviour
     public float _reloadDelay = 0.5f;
     public float _weaponRange = 50f;                                    // Distance in Unity units over which the player can fire
 
+    private Transform _rayHitTrans;
     private LayerMask _LayerMask = 1 << 8;
     private float _nextFire;
     private bool _bReloading;
@@ -26,7 +26,6 @@ public class PlayerShoot_Script : MonoBehaviour
     {
         if(!_animator)
         _animator = GetComponent<Animator>();
-        _laserLine.enabled = false;
     }
 
     private void Update()
@@ -48,13 +47,8 @@ public class PlayerShoot_Script : MonoBehaviour
                 RaycastHit _hit;     // Declare a raycast hit to store information about what our raycast has hit
                 if (Physics.Raycast(rayOrigin, _fpsCam.transform.forward, out _hit, _weaponRange, _LayerMask))
                 {
-                    // Set the end position for our laser line 
-                    _laserLine.SetPosition(1, _hit.point);
+                    _rayHitTrans.position = _hit.point;
                     Debug.Log("Raycast debug: " + _hit.transform.name);
-                }
-                else
-                {
-                    _laserLine.SetPosition(1, rayOrigin + (_fpsCam.transform.forward * _weaponRange));
                 }
                 StartCoroutine(ShotEffect());
                 PlayerHUD_Script.instance.AmmoText(_currentAmmo.ToString("00") + " / " + _magazineCapacity.ToString("00") + " | " + _maximumAmmo.ToString("000"));
@@ -86,10 +80,7 @@ public class PlayerShoot_Script : MonoBehaviour
         _currentAmmo--;
         _animator.SetTrigger("ShootRifle");
         yield return new WaitForSeconds(0.25f);
-        _laserLine.SetPosition(0, _gunEnd.position);
-        _laserLine.enabled = true;        
-        yield return new WaitForSeconds(0.1f);
-        _laserLine.enabled = false;
+        _arcReactorLauncher.LaunchRay();
     }
     IEnumerator ReloadDelay()
     {

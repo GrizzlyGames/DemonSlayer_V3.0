@@ -95,7 +95,7 @@ public class PlayerMovement_Script : MonoBehaviour
                 _anim.SetBool("Sprinting", false);
                 _isSprinting = false;
                 _fpsCamera.transform.localPosition = new Vector3(0, 1.75f, 0.3f);
-                _bodyRotationTrans.localRotation = Quaternion.Euler(0, 30, 0);
+                _bodyRotationTrans.localRotation = Quaternion.Euler(0, 33, 0);
             }
         }
     }
