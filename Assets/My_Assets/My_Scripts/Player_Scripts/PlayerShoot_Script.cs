@@ -6,6 +6,8 @@ public class PlayerShoot_Script : MonoBehaviour
 {
     public Camera _fpsCam;
     public Animator _animator;
+    public LineRenderer _laserLine;
+    public Transform _gunEnd;
 
     public int _currentAmmo = 12;
     public int _magazineCapacity = 12;
@@ -24,9 +26,10 @@ public class PlayerShoot_Script : MonoBehaviour
     {
         if(!_animator)
         _animator = GetComponent<Animator>();
+        _laserLine.enabled = false;
     }
 
-    void Update()
+    private void Update()
     {
         Shoot();
         Reload();
@@ -37,22 +40,23 @@ public class PlayerShoot_Script : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (_currentAmmo >= 1 && !_bReloading && Time.time > _nextFire)
-            {
-                _animator.SetTrigger("Shoot");
-
-                _currentAmmo--;      // Reduces current ammo
-
+            {                                        
                 _nextFire = Time.time + _fireRate;        // Update the time when our player can fire next
 
                 Vector3 rayOrigin = _fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));     // Create a vector at the center of our camera's viewport
                 Debug.DrawRay(rayOrigin, _fpsCam.transform.forward * _weaponRange, Color.green);      // Draw a line in the Scene View  from the point rayOrigin in the direction of fpsCam.transform.forward * weaponRange, using the color green
-                RaycastHit hit;     // Declare a raycast hit to store information about what our raycast has hit
-
-                if (Physics.Raycast(rayOrigin, _fpsCam.transform.forward, out hit, _weaponRange, _LayerMask))
+                RaycastHit _hit;     // Declare a raycast hit to store information about what our raycast has hit
+                if (Physics.Raycast(rayOrigin, _fpsCam.transform.forward, out _hit, _weaponRange, _LayerMask))
                 {
-                    Debug.Log("Raycast debug: " + hit.transform.name);
+                    // Set the end position for our laser line 
+                    _laserLine.SetPosition(1, _hit.point);
+                    Debug.Log("Raycast debug: " + _hit.transform.name);
                 }
-
+                else
+                {
+                    _laserLine.SetPosition(1, rayOrigin + (_fpsCam.transform.forward * _weaponRange));
+                }
+                StartCoroutine(ShotEffect());
                 PlayerHUD_Script.instance.AmmoText(_currentAmmo.ToString("00") + " / " + _magazineCapacity.ToString("00") + " | " + _maximumAmmo.ToString("000"));
             }
             if (_currentAmmo < 1 && _maximumAmmo > 1 && !_bReloading)
@@ -76,6 +80,17 @@ public class PlayerShoot_Script : MonoBehaviour
         }
     }
 
+    IEnumerator ShotEffect()
+    {
+        // Play audio
+        _currentAmmo--;
+        _animator.SetTrigger("ShootRifle");
+        yield return new WaitForSeconds(0.25f);
+        _laserLine.SetPosition(0, _gunEnd.position);
+        _laserLine.enabled = true;        
+        yield return new WaitForSeconds(0.1f);
+        _laserLine.enabled = false;
+    }
     IEnumerator ReloadDelay()
     {
         _bReloading = true;

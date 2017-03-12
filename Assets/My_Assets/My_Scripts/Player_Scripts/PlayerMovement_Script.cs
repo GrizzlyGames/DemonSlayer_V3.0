@@ -68,7 +68,7 @@ public class PlayerMovement_Script : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             _isCrouching = false;
-            _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.25f);
+            _fpsCamera.transform.localPosition = new Vector3(0, 1.75f, 0.25f);
             _anim.SetBool("Crouching", false);
         }
     }
@@ -82,19 +82,19 @@ public class PlayerMovement_Script : MonoBehaviour
 
         if (Mathf.Abs(direction.x) > 0 || Mathf.Abs(direction.z) > 0)
         {
-            Debug.Log("Want to sprint: " + _wantToSprint);
+
             if (Input.GetKeyDown(KeyCode.LeftShift) || _wantToSprint && !_isCrouching)
             {
                 _anim.SetBool("Sprinting", true);
                 _isSprinting = true;
-                _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.5f);
+                _fpsCamera.transform.localPosition = new Vector3(0, 1.75f, 0.5f);
                 _bodyRotationTrans.localRotation = Quaternion.Euler(0, 0, 0);
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift) || !_wantToSprint)
             {
                 _anim.SetBool("Sprinting", false);
                 _isSprinting = false;
-                _fpsCamera.transform.localPosition = new Vector3(0, 1.6f, 0.3f);
+                _fpsCamera.transform.localPosition = new Vector3(0, 1.75f, 0.3f);
                 _bodyRotationTrans.localRotation = Quaternion.Euler(0, 30, 0);
             }
         }

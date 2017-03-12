@@ -8,3 +8,18 @@ P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/UnityAnalytics/
 P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
 P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll
 P:/Program Files/Unity 5.5.1f1/Editor/Data/Managed/UnityEditor.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/Editor/UnityEditor.PlaymodeTestsRunner.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/UnityAnalytics/Editor/UnityEditor.Analytics.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/Managed/UnityEditor.Graphs.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+P:/Program Files/Unity 5.5.1f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
+C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll

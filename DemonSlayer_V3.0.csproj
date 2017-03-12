@@ -75,34 +75,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Character Controllers\Sources\Scripts\MouseLook.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\SampleStage\GetUI.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\AutoDestroy.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\BM_WaveEffect.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\BasicBullet.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\BeamCollision.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\BeamLine.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\BeamParam.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\BeamWave.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\BillBoard.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\Create_MyLineMesh.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\Flash.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\GeroBeam.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\GeroBeamHit.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\GetColor_BeamLine.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\GetColor_Flash.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\GetColor_Particle.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\JumpScene.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\MouseTgt.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\MultiShooter.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\RandomRotate.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\ScaleWiggle.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\SceneMaster.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\ShooterRotate.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\ShotBase.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\ShotParticleEmitter.cs" />
-    <Compile Include="Assets\Imported_Assets\BasicBeamShot\Script\ShotParticle_Scale.cs" />
-    <Compile Include="Assets\My_Assets\My_Scripts\Camera_Scripts\CameraHeadBob_Script.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\ArcReactorDemo_SceneQuitter.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\ArcReactorDemo_SceneSelector.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo1\ArcReactorDemoGunController.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo1\ArcReactorDemoTeleportZone.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo1\ArcReactorDemo_FollowCamera.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo2\ArcReactorDemoScene2Shooter.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo3\ArcReactorDemo3GenerateMirrors.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo3\ArcReactorDemo3Mirror.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo4\ArcReactorDemo4Mirror2d.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo4\ArcReactorDemo4_GunController.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo4\ArcReactorDemo4_Manager.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo4\ArcReactorDemo4_Target.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo5\ArcReactorDemo5_EffectChanger.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo5\ArcReactorDemo5_mousemove.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\Scripts\Demo5\ArcReactorDemo5_rotation.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Demos\StandardAssets\MouseLook.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\ArcReactor_Arc.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\ArcReactor_Launcher.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\ArcReactor_Launcher2D.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\ArcReactor_Manager.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\ArcReactor_PoolManager.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\ArcReactor_Trail.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\Utils\ArcReactorHitInfo.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\Utils\ArcReactorHitInfo2D.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\Utils\ArcReactorSingleLayer.cs" />
+    <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\Utils\ArcReactor_EmitterDestructor.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerHUD_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerHealth_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerMouseLook_Script.cs" />
@@ -111,13 +109,10 @@
     <Compile Include="Assets\My_Assets\My_Scripts\Temp_Scripts\TempDealDamage_Script.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Imported_Assets\BasicBeamShot\HowToUse_EN.txt" />
-    <None Include="Assets\Imported_Assets\BasicBeamShot\HowToUse_JP.txt" />
-    <None Include="Assets\Imported_Assets\BasicBeamShot\sh\AddColor_sh.shader" />
-    <None Include="Assets\Imported_Assets\BasicBeamShot\sh\Add_UVScroll_sh.shader" />
-    <None Include="Assets\Imported_Assets\BasicBeamShot\sh\BeamLine_sh.shader" />
-    <None Include="Assets\Imported_Assets\BasicBeamShot\sh\GeroBeam_sh.shader" />
-    <None Include="Assets\Imported_Assets\BasicBeamShot\sh\Sprite_Add_sh.shader" />
+    <None Include="Assets\Imported_Assets\ArcReactor\Documentation\changelog.txt" />
+    <None Include="Assets\Imported_Assets\ArcReactor\Documentation\readme.txt" />
+    <None Include="Assets\Imported_Assets\ArcReactor\Shaders\AdditiveCore.shader" />
+    <None Include="Assets\Imported_Assets\ArcReactor\Shaders\AdditiveCore_ZTest.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemonSlayer_V3.0", "DemonSlayer_V3.0.csproj", "{9E36D5FF-A9BB-E64B-1705-058E1C7FFD83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemonSlayer_V3.0.Editor", "DemonSlayer_V3.0.Editor.csproj", "{685504B7-8270-AD83-443A-3E986B9EA225}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{9E36D5FF-A9BB-E64B-1705-058E1C7FFD83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E36D5FF-A9BB-E64B-1705-058E1C7FFD83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E36D5FF-A9BB-E64B-1705-058E1C7FFD83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{685504B7-8270-AD83-443A-3E986B9EA225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685504B7-8270-AD83-443A-3E986B9EA225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685504B7-8270-AD83-443A-3E986B9EA225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685504B7-8270-AD83-443A-3E986B9EA225}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
