@@ -17,7 +17,6 @@ public class PlayerShoot_Script : MonoBehaviour
     public float _reloadDelay = 0.5f;
     public float _weaponRange = 50f;                                    // Distance in Unity units over which the player can fire
 
-    private Transform _rayHitTrans;
     private LayerMask _LayerMask = 1 << 8;
     private float _nextFire;
     private bool _bReloading;
@@ -47,7 +46,6 @@ public class PlayerShoot_Script : MonoBehaviour
                 RaycastHit _hit;     // Declare a raycast hit to store information about what our raycast has hit
                 if (Physics.Raycast(rayOrigin, _fpsCam.transform.forward, out _hit, _weaponRange, _LayerMask))
                 {
-                    _rayHitTrans.position = _hit.point;
                     Debug.Log("Raycast debug: " + _hit.transform.name);
                 }
                 StartCoroutine(ShotEffect());

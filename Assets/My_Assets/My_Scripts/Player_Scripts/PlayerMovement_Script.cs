@@ -29,7 +29,8 @@ public class PlayerMovement_Script : MonoBehaviour
     private bool _isCrouching = false;
     private bool _isSprinting = false;
     private bool _wantToSprint = false;
-
+    private bool _isKicking = false;
+    private float _yRotation;
 
     // Use this for initialization
     void Start()
@@ -43,9 +44,7 @@ public class PlayerMovement_Script : MonoBehaviour
     {
         Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("standing_melee_kick"))
-            PlayerMovement(direction);
-
+        PlayerMovement(direction);
         SetAnimator(direction);
     }
 
@@ -119,13 +118,28 @@ public class PlayerMovement_Script : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && !_anim.GetCurrentAnimatorStateInfo(0).IsName("standing_melee_kick"))
         {
+            _bodyRotationTrans.localRotation = Quaternion.Euler(0, 340, 0);
             _anim.SetTrigger("Kick");
         }
     }
+    private void Melee()
+    {
+        if (Input.GetButtonDown("Fire2"))
+            _anim.SetTrigger("Melee");
+    }
     private void SetAnimator(Vector3 direction)
     {
-        _anim.SetFloat("VelX", direction.x);
-        _anim.SetFloat("VelZ", direction.z);
+        if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("standing_melee_kick"))
+        {
+            _anim.SetFloat("VelX", direction.x);
+            _anim.SetFloat("VelZ", direction.z);
+        }
+        else
+        {
+            _anim.SetFloat("VelX", 0);
+            _anim.SetFloat("VelZ", 0);
+        }
+        
         _anim.SetBool("Ground", GroundedCheck());
         if (direction.x != 0 || direction.z != 0)
             _anim.SetBool("Walking", true);
@@ -135,6 +149,29 @@ public class PlayerMovement_Script : MonoBehaviour
         Sprint(direction);
         Jump();
         Kick();
+        Melee();
+        if(_isKicking)
+            _bodyRotationTrans.localRotation = Quaternion.Euler(0, 340, 0);
+    }
+    public float SetYRotation(float y)
+    {
+        _yRotation = y;
+        return (_yRotation);
+    }
+    public void SetMovementSpeed(float speed)
+    {
+        _moveSpeed = speed;
+    }
+    public void BodyRotation()
+    {
+        _bodyRotationTrans.localRotation = Quaternion.Euler(0, _yRotation, 0);
+    }
+    public void SetKick()
+    {
+        if (_isKicking)
+            _isKicking = false;
+        else if (!_isKicking)
+            _isKicking = true;
     }
     private bool GroundedCheck()
     {

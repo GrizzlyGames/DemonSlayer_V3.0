@@ -107,6 +107,7 @@
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerMovement_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerShoot_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Temp_Scripts\TempDealDamage_Script.cs" />
+    <Compile Include="Assets\PlayerInventory_Script.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imported_Assets\ArcReactor\Documentation\changelog.txt" />
