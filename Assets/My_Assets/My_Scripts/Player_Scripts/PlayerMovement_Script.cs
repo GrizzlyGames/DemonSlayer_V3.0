@@ -8,6 +8,9 @@ public class PlayerMovement_Script : MonoBehaviour
     private CharacterController _controller;
 
     [SerializeField]
+    private MeshRenderer _weaponRender;
+
+    [SerializeField]
     private Transform _bodyRotationTrans;
 
     [SerializeField]
@@ -22,6 +25,9 @@ public class PlayerMovement_Script : MonoBehaviour
     [SerializeField]
     private float _jumpSpeed = 1.0f;
 
+    private float _runMultiplier = 2.5f;
+
+    [SerializeField]
     private float _gravity = 1.0f;
 
     private Vector3 _jumpDirection;
@@ -31,7 +37,6 @@ public class PlayerMovement_Script : MonoBehaviour
     private bool _wantToSprint = false;
     private bool _isKicking = false;
     private float _yRotation;
-
     // Use this for initialization
     void Start()
     {
@@ -50,7 +55,7 @@ public class PlayerMovement_Script : MonoBehaviour
 
     private void PlayerMovement(Vector3 direction)
     {
-        Vector3 velocity = direction * _moveSpeed;
+        Vector3 velocity = direction * (_moveSpeed * _runMultiplier);
 
         velocity = transform.TransformDirection(velocity);
 
@@ -61,23 +66,28 @@ public class PlayerMovement_Script : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl) && !_isSprinting)
         {
             _isCrouching = true;
-            _fpsCamera.transform.localPosition = new Vector3(0, 1.2f, 0.25f);
             _anim.SetBool("Crouching", true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             _isCrouching = false;
-            _fpsCamera.transform.localPosition = new Vector3(0, 1.75f, 0.25f);
             _anim.SetBool("Crouching", false);
         }
     }
     private void Sprint(Vector3 direction)
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
             _wantToSprint = true;
+            _runMultiplier = 2.5f;
+        }
+
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
             _wantToSprint = false;
+            _runMultiplier = 1;
+        }
 
         if (Mathf.Abs(direction.x) > 0 || Mathf.Abs(direction.z) > 0)
         {
@@ -86,14 +96,12 @@ public class PlayerMovement_Script : MonoBehaviour
             {
                 _anim.SetBool("Sprinting", true);
                 _isSprinting = true;
-                _fpsCamera.transform.localPosition = new Vector3(0, 1.75f, 0.5f);
                 _bodyRotationTrans.localRotation = Quaternion.Euler(0, 0, 0);
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift) || !_wantToSprint)
             {
                 _anim.SetBool("Sprinting", false);
                 _isSprinting = false;
-                _fpsCamera.transform.localPosition = new Vector3(0, 1.75f, 0.3f);
                 _bodyRotationTrans.localRotation = Quaternion.Euler(0, 33, 0);
             }
         }
@@ -106,6 +114,7 @@ public class PlayerMovement_Script : MonoBehaviour
             {
                 _jumpDirection.y = _jumpSpeed;
                 _anim.SetTrigger("Jump");
+                _isCrouching = false;
             }
         }
         else
@@ -118,14 +127,10 @@ public class PlayerMovement_Script : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && !_anim.GetCurrentAnimatorStateInfo(0).IsName("standing_melee_kick"))
         {
-            _bodyRotationTrans.localRotation = Quaternion.Euler(0, 340, 0);
+            _bodyRotationTrans.localRotation = Quaternion.Euler(0, 5, 0);
+            _weaponRender.enabled = false;
             _anim.SetTrigger("Kick");
         }
-    }
-    private void Melee()
-    {
-        if (Input.GetButtonDown("Fire2"))
-            _anim.SetTrigger("Melee");
     }
     private void SetAnimator(Vector3 direction)
     {
@@ -139,7 +144,7 @@ public class PlayerMovement_Script : MonoBehaviour
             _anim.SetFloat("VelX", 0);
             _anim.SetFloat("VelZ", 0);
         }
-        
+
         _anim.SetBool("Ground", GroundedCheck());
         if (direction.x != 0 || direction.z != 0)
             _anim.SetBool("Walking", true);
@@ -148,10 +153,11 @@ public class PlayerMovement_Script : MonoBehaviour
         Crouch();
         Sprint(direction);
         Jump();
-        Kick();
-        Melee();
-        if(_isKicking)
-            _bodyRotationTrans.localRotation = Quaternion.Euler(0, 340, 0);
+        if (!_isSprinting && !_isCrouching)
+            Kick();
+
+        if (_isKicking)
+            _bodyRotationTrans.localRotation = Quaternion.Euler(0, 5, 0);
     }
     public float SetYRotation(float y)
     {
@@ -176,5 +182,16 @@ public class PlayerMovement_Script : MonoBehaviour
     private bool GroundedCheck()
     {
         return Physics.Raycast(transform.position, -Vector3.up, 0.09f);
+    }
+
+    public GameObject _playerMesh;
+
+    public void ChangeCameraCullingMask(int mask)
+    {
+        _playerMesh.layer = mask;
+    }
+    public void EnableWeaponMeshRender()
+    {
+        _weaponRender.enabled = true;
     }
 }

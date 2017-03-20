@@ -25,6 +25,7 @@ public class PlayerShoot_Script : MonoBehaviour
     {
         if(!_animator)
         _animator = GetComponent<Animator>();
+        PlayerHUD_Script.instance.AmmoText(_currentAmmo.ToString("00") + " / " + _magazineCapacity.ToString("00") + " | " + _maximumAmmo.ToString("000"));
     }
 
     private void Update()

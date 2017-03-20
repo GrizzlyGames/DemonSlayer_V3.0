@@ -15,6 +15,7 @@ public class PlayerMouseLook_Script : MonoBehaviour {
     float rotationX = 0F;
     float rotationY = 0F;
     public bool _lookX;
+    public bool _hasAnim;
     Quaternion originalRotation;
     Animator _anim;
 
@@ -25,8 +26,12 @@ public class PlayerMouseLook_Script : MonoBehaviour {
             GetComponent<Rigidbody>().freezeRotation = true;
         originalRotation = transform.localRotation;
 
-        if (GetComponent<Animator>() && _lookX)
-            _anim = GetComponent<Animator>();
+        if (_hasAnim)
+        {
+            if (GetComponent<Animator>() && _lookX)
+                _anim = GetComponent<Animator>();
+        }
+        
     }
 
     void Update()
@@ -56,7 +61,7 @@ public class PlayerMouseLook_Script : MonoBehaviour {
             Quaternion yQuaternion = Quaternion.AngleAxis(-rotationY, Vector3.right);
             transform.localRotation = originalRotation * yQuaternion;
         }
-        if (_lookX)
+        if (_lookX && _hasAnim)
         {
             _anim.SetFloat("LookX", Input.GetAxis("Mouse X"));
         }

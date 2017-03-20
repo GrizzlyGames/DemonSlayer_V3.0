@@ -101,12 +101,25 @@
     <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\Utils\ArcReactorHitInfo2D.cs" />
     <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\Utils\ArcReactorSingleLayer.cs" />
     <Compile Include="Assets\Imported_Assets\ArcReactor\Scripts\Utils\ArcReactor_EmitterDestructor.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\ActiveStateToggler.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\ApplicationManager.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\ChangeColor.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\DragMe.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\DragPanel.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\DropMe.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\PanelManager.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\ResizePanel.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\ScrollDetailTexture.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\ShowSliderValue.cs" />
+    <Compile Include="Assets\Imported_Assets\MainMenu\Scripts\TiltWindow.cs" />
+    <Compile Include="Assets\My_Assets\My_Scripts\Camera_Script\FollowPlayerCamera_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerHUD_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerHealth_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerMouseLook_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerMovement_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Player_Scripts\PlayerShoot_Script.cs" />
     <Compile Include="Assets\My_Assets\My_Scripts\Temp_Scripts\TempDealDamage_Script.cs" />
+    <Compile Include="Assets\My_Assets\My_Scripts\Utility_Scripts\SceneChanger_Script.cs" />
     <Compile Include="Assets\PlayerInventory_Script.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +127,9 @@
     <None Include="Assets\Imported_Assets\ArcReactor\Documentation\readme.txt" />
     <None Include="Assets\Imported_Assets\ArcReactor\Shaders\AdditiveCore.shader" />
     <None Include="Assets\Imported_Assets\ArcReactor\Shaders\AdditiveCore_ZTest.shader" />
+    <None Include="Assets\Imported_Assets\MainMenu\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Imported_Assets\MainMenu\Materials\UI-Default-No-Alpha.shader" />
+    <None Include="Assets\Imported_Assets\MainMenu\Textures and Sprites\SF UI\Background\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

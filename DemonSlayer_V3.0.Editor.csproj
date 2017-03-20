@@ -138,6 +138,9 @@
     <None Include="Assets\Imported_Assets\ArcReactor\Documentation\readme.txt" />
     <None Include="Assets\Imported_Assets\ArcReactor\Shaders\AdditiveCore.shader" />
     <None Include="Assets\Imported_Assets\ArcReactor\Shaders\AdditiveCore_ZTest.shader" />
+    <None Include="Assets\Imported_Assets\MainMenu\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Imported_Assets\MainMenu\Materials\UI-Default-No-Alpha.shader" />
+    <None Include="Assets\Imported_Assets\MainMenu\Textures and Sprites\SF UI\Background\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
