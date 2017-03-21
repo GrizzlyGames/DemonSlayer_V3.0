@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerHealth_Script : MonoBehaviour {
 
+    public Camera _mainCamera;
+
     public Image _hurtImage;
 
     public bool _alive = true;
@@ -17,6 +19,7 @@ public class PlayerHealth_Script : MonoBehaviour {
         {
             _health = 0;
             _alive = false;
+            _mainCamera.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         else
         {

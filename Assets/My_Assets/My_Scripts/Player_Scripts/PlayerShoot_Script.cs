@@ -47,7 +47,11 @@ public class PlayerShoot_Script : MonoBehaviour
                 RaycastHit _hit;     // Declare a raycast hit to store information about what our raycast has hit
                 if (Physics.Raycast(rayOrigin, _fpsCam.transform.forward, out _hit, _weaponRange, _LayerMask))
                 {
-                    Debug.Log("Raycast debug: " + _hit.transform.name);
+                    if (_hit.transform.GetComponent<Enemy_Script>())
+                    {
+                        _hit.transform.GetComponent<Enemy_Script>().TakeDamage(_damage);
+                    }
+                    //Debug.Log("Raycast debug: " + _hit.transform.name);
                 }
                 StartCoroutine(ShotEffect());
                 PlayerHUD_Script.instance.AmmoText(_currentAmmo.ToString("00") + " / " + _magazineCapacity.ToString("00") + " | " + _maximumAmmo.ToString("000"));
