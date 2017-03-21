@@ -25,7 +25,7 @@ public class PlayerMovement_Script : MonoBehaviour
     [SerializeField]
     private float _jumpSpeed = 1.0f;
 
-    private float _runMultiplier = 2.5f;
+    private float _runMultiplier = 1.0f;
 
     [SerializeField]
     private float _gravity = 1.0f;

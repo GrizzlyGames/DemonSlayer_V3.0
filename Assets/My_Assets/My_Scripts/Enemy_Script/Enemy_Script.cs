@@ -15,6 +15,7 @@ public class Enemy_Script : MonoBehaviour
 
     public Image healthBarImage;
 
+    private bool haveAttacked = false;
     private bool bAttacking = false;
     private Vector3 previousPosition;
     private Animator anim;
@@ -22,6 +23,7 @@ public class Enemy_Script : MonoBehaviour
 
     private Transform _playerTransform;
     private Vector3 _target;
+    private LayerMask _LayerMask = 1 << 8;
 
     void Awake()
     {
@@ -63,6 +65,7 @@ public class Enemy_Script : MonoBehaviour
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * lookSpeed);
             #endregion
+            HitRay();
         }
         else
         {
@@ -102,6 +105,22 @@ public class Enemy_Script : MonoBehaviour
         }
     }
     
+    private void HitRay()
+    {
+        Vector3 rayOrigin = new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z);
+        Debug.DrawRay(rayOrigin, transform.forward * 2, Color.green);      // Draw a line in the Scene View  from the point rayOrigin in the direction of fpsCam.transform.forward * weaponRange, using the color green
+        RaycastHit _hit;     // Declare a raycast hit to store information about what our raycast has hit
+        if (Physics.Raycast(rayOrigin, transform.forward, out _hit, 2, _LayerMask))
+        {
+            if (_hit.transform.tag.Equals("Player") && bAttacking && !haveAttacked)
+                if (_hit.transform.GetComponent<PlayerHealth_Script>())
+                {
+                    _hit.transform.GetComponent<PlayerHealth_Script>().Damage(damage);
+                    haveAttacked = true;
+                }
+        }
+    }
+
     IEnumerator AttackDelay()
     {
         bAttacking = true;
@@ -110,6 +129,7 @@ public class Enemy_Script : MonoBehaviour
         yield return new WaitForSeconds(1);
         anim.SetInteger("attack", 0);
         bAttacking = false;
+        haveAttacked = false;
     }
     IEnumerator WalkDelay()
     {

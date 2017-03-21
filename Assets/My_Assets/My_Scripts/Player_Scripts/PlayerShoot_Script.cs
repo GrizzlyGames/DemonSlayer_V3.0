@@ -53,7 +53,9 @@ public class PlayerShoot_Script : MonoBehaviour
                     }
                     //Debug.Log("Raycast debug: " + _hit.transform.name);
                 }
-                StartCoroutine(ShotEffect());
+                _currentAmmo--;
+                _animator.SetTrigger("ShootRifle");
+                _arcReactorLauncher.LaunchRay();
                 PlayerHUD_Script.instance.AmmoText(_currentAmmo.ToString("00") + " / " + _magazineCapacity.ToString("00") + " | " + _maximumAmmo.ToString("000"));
             }
             if (_currentAmmo < 1 && _maximumAmmo > 1 && !_bReloading)
@@ -77,14 +79,6 @@ public class PlayerShoot_Script : MonoBehaviour
         }
     }
 
-    IEnumerator ShotEffect()
-    {
-        // Play audio
-        _currentAmmo--;
-        _animator.SetTrigger("ShootRifle");
-        yield return new WaitForSeconds(0.25f);
-        _arcReactorLauncher.LaunchRay();
-    }
     IEnumerator ReloadDelay()
     {
         _bReloading = true;

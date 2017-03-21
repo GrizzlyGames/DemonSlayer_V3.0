@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PlayerHealth_Script : MonoBehaviour {
 
-    public Camera _mainCamera;
-
     public Image _hurtImage;
+    public Image _redImage;
+
+    public Text _deathText;
 
     public bool _alive = true;
     public int _health = 100;
@@ -18,11 +20,14 @@ public class PlayerHealth_Script : MonoBehaviour {
         if (_health < 0)
         {
             _health = 0;
+            _deathText.text = "KILLED";
             _alive = false;
-            _mainCamera.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+            StartCoroutine(DeathDelay());
         }
         else
         {
+            _deathText.text = "";
             HealthHUD();
         }        
     }
@@ -33,5 +38,12 @@ public class PlayerHealth_Script : MonoBehaviour {
         _transparencyAmount = Mathf.Abs(255 - _transparencyAmount);
         Debug.Log("Hurt image transparency amount: " + _transparencyAmount);
         _hurtImage.color = new Color32(255, 255, 255, (byte)_transparencyAmount);
+        _redImage.color = new Color32(255, 0, 0, (byte)_transparencyAmount);
+    }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("MainMenu_Scene");
     }
 }
